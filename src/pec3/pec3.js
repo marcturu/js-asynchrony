@@ -6,47 +6,32 @@
  * @returns {*}
  */
 function summarizeCartItems(cartItems, callback) {
-  const ERROR_EMPTY_ARRAY = "cartItems debe ser un array no vacío de objetos";
-  const ERROR_INVALID_ITEM = "Los elementos del carrito deben tener la estructura { id: Number, price: Number, quantity: Number }, siendo quantity y price positivos";
-
-  // Validate that cartItems is a non-empty array
+  // Validate that cartItems is a non-empty array. If not, notify the callback and return
   if (!Array.isArray(cartItems) || cartItems.length === 0) {
-      callback(ERROR_EMPTY_ARRAY, null);
-      return 'done';
+    return callback("cartItems debe ser un array no vacío de objetos", null);
   }
 
-  try {
-    let totalItems = 0;
-    let totalPrice = 0;
-    const itemIds = [];
+  let totalItems = 0;
+  let totalPrice = 0;
+  const itemIds = [];
 
-    for (const item of cartItems) {
-      // Validate that each item in cartItems has the structure { id: Number, price: Number, quantity: Number } and quantity and price are positive NUMBERS
-      if (!item || typeof item !== "object" || typeof item.id !== "number" || typeof item.price !== "number" || typeof item.quantity !== "number" ||
-          item.price <= 0 || item.quantity <= 0) {
-        throw new Error(ERROR_INVALID_ITEM);
-      }
-
-      totalItems += item.quantity;
-      totalPrice += item.price * item.quantity;
-      itemIds.push(item.id);
+  for (const item of cartItems) {
+    // Validate that each item in cartItems has the structure { id: Number, price: Number, quantity: Number } and quantity and price are positive NUMBERS. If not, notify the callback and return
+    if (!item || typeof item !== "object" || typeof item.id !== "number" || typeof item.price !== "number" || typeof item.quantity !== "number" || 
+      item.price <= 0 || item.quantity <= 0) {
+      return callback("Los elementos del carrito deben tener la estructura { id: Number, price: Number, quantity: Number }, siendo quantity y price positivos", null);
     }
 
-    // Sort itemIds numerically in ascending order
-    itemIds.sort((a, b) => a - b);
+    totalItems += item.quantity;
+    totalPrice += item.price * item.quantity;
+    itemIds.push(item.id);
+  }
 
-    const summary = {
-      totalItems,
-      totalPrice,
-      itemIds
-    };
+  // Sort itemIds numerically in ascending order
+  itemIds.sort((a, b) => a - b);
 
-    callback(null, summary); 
-    return 'done';
-  } catch (error) {
-    callback(error.message, null);
-    return 'done';
-  }  
+  const summary = { totalItems, totalPrice, itemIds };
+  return callback(null, summary); 
 }
 
 /**
@@ -94,20 +79,15 @@ function authorizeOrderPayment(amount) {
   return new Promise((resolve, reject) => {
     // Validate that amount is a positive NUMBER. If not, reject the promise
     if (typeof amount !== "number" || amount <= 0) {
-      reject(new Error("Invalid order amount"));
-      return;
+      return reject(new Error("Invalid order amount"));
     }
 
-    // Validate that amount is not greater than 2500. If yes, reject the promise
+    // Validate that amount is not greater than 2500. If not, reject the promise
     if (amount > 2500) {
-      reject(new Error("Order total too high"));
-      return;
+      return reject(new Error("Order total too high"));
     }
 
-    resolve ({
-      status: "approved", 
-      amount
-    });
+    resolve ({ status: "approved", amount });
   });
 }
 
@@ -120,14 +100,15 @@ function authorizeOrderPayment(amount) {
  * @returns {Promise<object>}
  */
 function buildCustomerOnboarding(fetchCustomerProfile, fetchSubscription, fetchWelcomePack) {
+  let customer; // Variable to share data between promises
+
   return fetchCustomerProfile()
-    .then((customer) => {
-      // Fetch the subscription for the customer
-      return fetchSubscription(customer.id)
-        .then((subscription) => {
-          // Use the customer and subscription objects to fetch the welcome pack
-          return fetchWelcomePack({customer, subscription});
-        });
+    .then((customerData) => {
+      customer = customerData;
+      return fetchSubscription(customer.id);
+    })
+    .then((subscription) => {
+      return fetchWelcomePack({customer, subscription});
     })
     // If any of the promises in the chain fails, throw an error
     .catch((error) => {
@@ -145,12 +126,6 @@ function buildCustomerOnboarding(fetchCustomerProfile, fetchSubscription, fetchW
 async function loadPerformanceReport(fetchMetrics, processMetrics) {
   try {
     const { warehouse, stats } = await fetchMetrics();
-
-    // Validate that stats is an array of at least 2 numbers. If not, throw an error
-    if (!Array.isArray(stats) || stats.length < 2 || !stats.every((stat) => typeof stat === "number")) {
-      throw new Error("Stats must be an arry of at least 2 numbers");
-    }
-
     const { average } = await processMetrics(stats);
     
     return { warehouse, stats, average };
