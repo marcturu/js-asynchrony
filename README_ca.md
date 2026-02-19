@@ -28,8 +28,8 @@ Alguns detalls a tenir en compte:
 - Els tests automàtics estan dissenyats per detectar exercicis erronis o incomplets per a casos concrets. El fet que un test passi no garanteix que l'exercici estigui realitzat correctament, és a dir, que cobreixi tots els casos.
 - Un exercici els tests del qual no passen es puntuarà amb un 0 llevat que hi hagi problemes amb els tests.
 - A més de passar els tests, el professorat avaluarà el vostre codi en base als següents criteris:
-- Llegibilitat, senzillesa i qualitat del codi.
-- Coneixements de programació. Per exemple, no utilitzar les estructures de control adequades, com ara utilitzar un bucle per construir una sentència condicional o viceversa.
+  - Llegibilitat, senzillesa i qualitat del codi.
+  - Coneixements de programació. Per exemple, no utilitzar les estructures de control adequades, com ara utilitzar un bucle per construir una sentència condicional o viceversa.
 
 ## Requisits mínims
 
