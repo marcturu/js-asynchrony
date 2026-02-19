@@ -305,7 +305,7 @@ demo();
 // }
 ```
 
-### Ejercicio 6 · Gestionar un proceso de inventario en segundo plano (1,5 pts)
+### Ejercicio 6 · Gestionar un proceso de inventario en segundo plano (2 pts)
 
 En este ejercicio practicaremos la gestión de procesos periódicos que corren en segundo plano y controlan su propio estado.
 
