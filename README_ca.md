@@ -4,9 +4,8 @@ En aquesta PAC es practiquen les tècniques de programació asíncrona a JavaScr
 
 ## Competències
 
-En aquesta PAC es desenvolupen les següents competències del Màster:
+En aquesta PAC es desenvolupen les següents competències:
 
-- [CB10] Que els estudiants tinguin les habilitats d'aprenentatge que els permetin continuar estudiant d'una manera que haurà de ser en gran mesura autodirigida o autònoma.
 - [CG2] Resoldre problemes, identificant, analitzant i definint-ne els elements significatius.
 - [CE3] Utilitzar de manera adequada els llenguatges de programació i les millors eines de desenvolupament per a l'anàlisi, el disseny i la implementació de llocs i aplicacions web en funció de les necessitats del projecte.
 - [CE5] Aplicar de la manera més adequada els patrons d'arquitectura de programari més convenient per a cada problema.
@@ -19,13 +18,7 @@ Els objectius concrets d'aquesta PAC són:
 - Contribuir a conèixer a fons el llenguatge JavaScript per poder fer-lo servir en el desenvolupament d'aplicacions Web.
 - Utilitzar les tècniques de programació asíncrona que ofereix JavaScript.
 
-## Lliurament de la PAC
-
-Un cop hagis realitzat les activitats pràctiques proposades en aquest enunciat, **el lliurament es realitzarà a través de l'apartat de l'aula virtual de la UOC**.
-
 ## Puntuació
-
-El fet de treballar amb tests per verificar la funcionalitat del codi us permetrà tenir una idea de la vostra pròpia nota abans del lliurament.
 
 La puntuació dels exercicis pràctics es basa en dos criteris: **Funcionalitat** i **Implementació**. S'espera que els exercicis funcionin correctament (passin els tests) i que la implementació (el codi) tingui una qualitat adequada.
 
@@ -41,16 +34,12 @@ Alguns detalls a tenir en compte:
 ## Requisits mínims
 
 - Tenir instal·lat Visual Studio Code (o qualsevol altre IDE).
-- Estudi de la introducció i repàs a JavaScript (Activitat 1 del Repte 2).
-- Estudi dels conceptes de JavaScript (Activitats 2 i 3 del Repte 2).
-- Estudi de la introducció a l'assincronia en JavaScript (Activitat 1 del Repte 3).
-- Estudi dels conceptes d'assincronia de JavaScript (Activitat 2 del Repte 3).
+- Estudi de la introducció i repàs a JavaScript.
+- Estudi dels conceptes de JavaScript.
+- Estudi de la introducció a l'assincronia en JavaScript.
+- Estudi dels conceptes d'assincronia de JavaScript.
 
-## Activitats del repte - 0,5 punts
-
-Recorda que aquest repte té associades dues activitats d'avaluació que també has de realitzar. En particular, són les activitats 1.2 i 2.2, que trobaràs a l'aula virtual.
-
-## Exercicis pràctics - 9,5 punts
+## Exercicis pràctics - (10 punts)
 
 Per realitzar els exercicis pràctics t'has de dirigir a la següent ruta, dins del repositori: `src/pec3/pec3.js`.
 En aquest fitxer hauràs d'implementar les funcions que t'indiquem als exercicis que veuràs més avall.
@@ -75,9 +64,7 @@ npm test
 
 La instrucció anterior llançarà els tests cada vegada que desis el fitxer `src/pec3/pec3.js`, que és precisament on implementaràs els exercicis d'aquesta PAC.
 
-Tal com t'indiquem a la PAC 1, la primera vegada que executis `npm test` i es llencin els tests, molt possiblement fallaran tots, ja que no hi ha cap exercici implementat. A mesura que vagis treballant en els exercicis i guardis el fitxer, pot ser que algun test llanci algun error. Revisa el missatge d'error que s'imprimeix per conèixer el format i entendre com es notifiquen els errors.
-
-Si tens algun problema amb els tests, no dubtis a preguntar al fòrum "Dudas PAC 3 | Dubtes PAC 3" de l'aula.
+La primera vegada que executis `npm test` i es llencin els tests, molt possiblement fallaran tots, ja que no hi ha cap exercici implementat. A mesura que vagis treballant en els exercicis i guardis el fitxer, pot ser que algun test llanci algun error. Revisa el missatge d'error que s'imprimeix per conèixer el format i entendre com es notifiquen els errors.
 
 ### Exercici 1 · Resumir articles del cistella de la compra amb un callback (2 pts)
 
