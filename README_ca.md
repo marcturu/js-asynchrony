@@ -305,7 +305,7 @@ demo();
 // }
 ```
 
-### Exercici 6 · Gestionar un procés d'inventari en segon pla (1,5 pts)
+### Exercici 6 · Gestionar un procés d'inventari en segon pla (2 pts)
 
 En aquest exercici practicarem la gestió de processos periòdics que corren en segon pla i controlen el seu propi estat.
 
