@@ -1,4 +1,4 @@
-# ⏱️ JS Asynchrony — Callbacks, promises & scheduling in JavaScript
+# ⏱️ JS Asynchrony — Callbacks, promises & scheduling
 
 <sub>🗓️ Developed in December 2025</sub>
 
